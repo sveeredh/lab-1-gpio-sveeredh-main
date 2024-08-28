@@ -140,6 +140,8 @@ void keypad(void) {
     GPIOC->ODR = (1 << (i + 4));
     nano_wait(1000000);
     int32_t row_vals = GPIOC->IDR & 0xF;
+
+    // +8 corresponds to correct pb val
     setn(i + 8, (row_vals & (1 << i)) ? 1 : 0);
   }
-}
+} 
